@@ -6,20 +6,20 @@
         <div class="max-w-6xl mx-auto px-5">
             <nav class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="{{ "/" | relURL }}" class="flex items-center no-underline">
+                    <a href="{{ "/" | absURL }}" class="flex items-center no-underline">
                         <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
                         <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
                     </a>
                 </div>
                 <ul class="hidden md:flex space-x-8">
-                    <li><a href="{{ "/" | relURL }}#how-it-works" class="text-gray-700 font-medium no-underline">How It Works</a></li>
+                    <li><a href="{{ "/" | absURL }}#how-it-works" class="text-gray-700 font-medium no-underline">How It Works</a></li>
                     <li><a href="{{ "setting" | relURL }}" class="text-gray-700 font-medium no-underline">Setting</a></li>
-                    <li><a href="{{ "/" | relURL }}#community" class="text-gray-700 font-medium no-underline">Community</a></li>
-                    <li><a href="{{ "/" | relURL }}#dms" class="text-gray-700 font-medium no-underline">DMs</a></li>
+                    <li><a href="{{ "/" | absURL }}#community" class="text-gray-700 font-medium no-underline">Community</a></li>
+                    <li><a href="{{ "/" | absURL }}#dms" class="text-gray-700 font-medium no-underline">DMs</a></li>
                     <li><a href="{{ "faq" | relURL }}" class="text-gray-700 font-medium no-underline">FAQ</a></li>
-                    <li><a href="{{ "/" | relURL }}#join" class="text-gray-700 font-medium no-underline">Join</a></li>
+                    <li><a href="{{ "/" | absURL }}#join" class="text-gray-700 font-medium no-underline">Join</a></li>
                 </ul>
-                <a href="{{ "/" | relURL }}#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guildhall</a>
+                <a href="{{ "/" | absURL }}#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guildhall</a>
             </nav>
         </div>
     </header>
@@ -49,7 +49,7 @@
         <div class="max-w-4xl mx-auto px-5">
             <h3 style="font-family: 'Merriweather', 'Georgia', serif;" class="text-3xl font-bold mb-6">Ready to Begin Your Adventure?</h3>
             <p style="font-family: 'Inter', 'Arial', sans-serif;" class="text-xl mb-8 leading-relaxed">Join the Triboar Guildhall and start writing your story in the Forgotten Realms.</p>
-            <a href="{{ "/" | relURL }}#join" style="font-family: 'Inter', 'Arial', sans-serif; background-color: #d4a94c; color: #2f3a4f;" class="px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guildhall →</a>
+            <a href="{{ "/" | absURL }}#join" style="font-family: 'Inter', 'Arial', sans-serif; background-color: #d4a94c; color: #2f3a4f;" class="px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guildhall →</a>
         </div>
     </section>
 
