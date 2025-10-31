@@ -1,0 +1,201 @@
+{{ define "title" }}Complete Your Membership — Triboar Guildhall{{ end }}
+
+{{ define "main" }}
+    <!-- Header -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-5">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
+                    <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="min-h-screen bg-gradient-to-br from-guild-beige-light to-guild-beige py-12 px-5">
+        <div class="max-w-2xl mx-auto">
+            <!-- Not Authenticated -->
+            <div id="not-auth-state" class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-guild-brown mb-2">Authentication Required</h2>
+                <p class="text-gray-600 mb-6">Please log in with Discord first.</p>
+                <a href="http://localhost:3000/api/auth/discord" class="inline-block bg-guild-blue text-white px-8 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">
+                    Login with Discord
+                </a>
+            </div>
+
+            <!-- Checkout Form (shown when authenticated) -->
+            <div id="checkout-state" class="hidden">
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-6">
+                    <h2 class="text-3xl font-bold text-guild-brown mb-2">Complete Your Membership</h2>
+                    <p class="text-gray-600 mb-8">Join the Triboar Guildhall and start your adventure today.</p>
+
+                    <!-- User Info Summary -->
+                    <div class="bg-guild-beige-light rounded-lg p-6 mb-8">
+                        <h3 class="font-semibold text-guild-brown mb-4">Your Account</h3>
+                        <div class="space-y-2">
+                            <p class="text-sm text-gray-600">
+                                <span class="font-semibold">Discord:</span>
+                                <span id="display-name" class="text-gray-800">Loading...</span>
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                <span class="font-semibold">Email:</span>
+                                <span id="display-email" class="text-gray-800">Loading...</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Membership Details -->
+                    <div class="border-b border-gray-200 pb-8 mb-8">
+                        <h3 class="font-semibold text-guild-brown mb-4">Membership Details</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="font-semibold text-guild-brown">Triboar Guildhall Membership</p>
+                                    <p class="text-sm text-gray-600">Monthly recurring</p>
+                                </div>
+                                <p class="font-bold text-xl text-guild-brown">$5.00<span class="text-sm text-gray-600">/mo</span></p>
+                            </div>
+                            <div class="bg-guild-beige-light rounded p-4">
+                                <p class="text-sm text-gray-700">
+                                    ✓ Unlimited access to all campaigns<br>
+                                    ✓ Participate in seasonal events<br>
+                                    ✓ Join our community Discord<br>
+                                    ✓ Cancel anytime
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Promo Code -->
+                    <div class="mb-8">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" id="promo-toggle" class="rounded mr-3">
+                            <span class="text-sm text-gray-600">Have a promo code?</span>
+                        </label>
+                        <div id="promo-input-group" class="hidden mt-3">
+                            <input type="text" id="promo-code" placeholder="Enter promo code" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-guild-blue">
+                            <p class="text-xs text-gray-500 mt-1">Enter your code and we'll apply any discount.</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-3">
+                        <button id="checkout-btn" class="w-full bg-guild-blue text-white px-8 py-4 rounded-md font-semibold hover:bg-guild-blue-dark transition-colors text-lg">
+                            Proceed to Payment
+                        </button>
+                        <a href="{{ "/" | relURL }}" class="block text-center text-guild-blue no-underline hover:text-guild-blue-dark font-semibold">
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="bg-guild-brown text-white rounded-lg p-6 text-center">
+                    <p class="text-sm mb-2">🛡️ <span class="font-semibold">Secure Payment</span></p>
+                    <p class="text-xs opacity-90">Your payment is processed securely by Stripe. We never store your card information.</p>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="bg-white rounded-lg shadow-lg p-8 text-center hidden">
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-guild-brown mb-2">Something Went Wrong</h2>
+                <p id="error-message" class="text-gray-600 mb-6">Please try again.</p>
+                <div class="space-y-3">
+                    <a href="{{ "/" | relURL }}" class="block bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is authenticated
+        const token = localStorage.getItem('authToken');
+        const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+        if (!token || !user) {
+            showState('not-auth');
+        } else {
+            showState('checkout');
+            displayUserInfo();
+        }
+
+        function showState(state) {
+            document.getElementById('not-auth-state').classList.toggle('hidden', state !== 'not-auth');
+            document.getElementById('checkout-state').classList.toggle('hidden', state !== 'checkout');
+            document.getElementById('error-state').classList.toggle('hidden', state !== 'error');
+        }
+
+        function displayUserInfo() {
+            document.getElementById('display-name').textContent = user.discord_username || 'User';
+            document.getElementById('display-email').textContent = user.email;
+        }
+
+        // Toggle promo code input
+        document.getElementById('promo-toggle').addEventListener('change', (e) => {
+            document.getElementById('promo-input-group').classList.toggle('hidden', !e.target.checked);
+        });
+
+        // Handle checkout button click
+        document.getElementById('checkout-btn').addEventListener('click', async () => {
+            const btn = document.getElementById('checkout-btn');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+
+            try {
+                const couponCode = document.getElementById('promo-code').value.trim() || null;
+
+                // Call backend to create checkout session
+                const response = await fetch('http://localhost:3000/api/checkout/session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        coupon_code: couponCode
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    throw new Error(data.error?.message || 'Failed to create checkout session');
+                }
+
+                // Redirect to Stripe Checkout
+                if (data.session && data.session.url) {
+                    window.location.href = data.session.url;
+                } else {
+                    throw new Error('No checkout URL received');
+                }
+
+            } catch (error) {
+                console.error('Checkout error:', error);
+                document.getElementById('error-message').textContent = error.message || 'Failed to start payment. Please try again.';
+                showState('error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        });
+    </script>
+{{ end }}
