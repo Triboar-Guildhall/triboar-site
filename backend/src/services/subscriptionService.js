@@ -2,6 +2,8 @@ import logger from '../utils/logger.js';
 import { query } from '../db/connection.js';
 import * as discordRoleService from './discordRoleService.js';
 import * as auditLogService from './auditLogService.js';
+import * as gracePeriodService from './gracePeriodService.js';
+import * as webhookService from './webhookService.js';
 
 export const createOrUpdateSubscription = async (userId, stripeSubscription) => {
   try {
@@ -161,6 +163,21 @@ export const handleSubscriptionActive = async (stripeSubscription) => {
       // Continue even if Discord role sync fails
     }
 
+    // Remove from grace period if they were in it (they renewed)
+    try {
+      await gracePeriodService.removeFromGracePeriod(user.id, user.discord_id);
+      await webhookService.sendSubscriptionRenewed(user.id, user.discord_id);
+    } catch (err) {
+      logger.error({ err, userId: user.id }, 'Failed to handle renewal from grace period');
+    }
+
+    // Send webhook to RoleBot
+    try {
+      await webhookService.sendSubscriptionActivated(user.id, user.discord_id);
+    } catch (err) {
+      logger.error({ err, userId: user.id }, 'Failed to send webhook');
+    }
+
     // Log event
     await auditLogService.logEvent(user.id, 'subscription.activated', {
       subscription_id: stripeSubscription.id,
@@ -189,27 +206,23 @@ export const handleSubscriptionCanceled = async (stripeSubscription) => {
       throw new Error('User not found for subscription');
     }
 
-    // Update user tier back to free
-    await query(
-      'UPDATE users SET tier = $1 WHERE id = $2',
-      ['free', user.id]
-    );
-
-    // Remove paid role from Discord
+    // DON'T remove role yet - move to grace period for 7 days
+    // User keeps @Subscribed role during grace period
     try {
-      await discordRoleService.syncRoles(user.discord_id, false);
+      await gracePeriodService.moveToGracePeriod(user.id, user.discord_id);
+      await webhookService.sendGracePeriodStarted(user.id, user.discord_id);
     } catch (err) {
-      logger.error({ err, discordId: user.discord_id }, 'Failed to remove Discord roles');
-      // Continue even if Discord role sync fails
+      logger.error({ err, userId: user.id }, 'Failed to move to grace period');
     }
 
     // Log event
     await auditLogService.logEvent(user.id, 'subscription.canceled', {
       subscription_id: stripeSubscription.id,
       status: stripeSubscription.status,
+      movedToGracePeriod: true,
     });
 
-    logger.info({ userId: user.id, subscriptionId: stripeSubscription.id }, 'Subscription canceled');
+    logger.info({ userId: user.id, subscriptionId: stripeSubscription.id }, 'Subscription canceled - moved to grace period');
   } catch (err) {
     logger.error({ err, subscription_id: stripeSubscription.id }, 'Failed to handle subscription canceled');
     throw err;

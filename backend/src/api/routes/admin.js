@@ -3,6 +3,8 @@ import { asyncHandler } from '../middleware/errorHandler.js';
 import { requireAdmin } from '../middleware/auth.js';
 import * as discordRoleService from '../../services/discordRoleService.js';
 import * as auditLogService from '../../services/auditLogService.js';
+import * as gracePeriodService from '../../services/gracePeriodService.js';
+import * as webhookService from '../../services/webhookService.js';
 import logger from '../../utils/logger.js';
 import { query } from '../../db/connection.js';
 import { ValidationError, NotFoundError } from '../../utils/errors.js';
@@ -243,6 +245,121 @@ router.get('/audit-logs', asyncHandler(async (req, res) => {
     res.json(result);
   } catch (err) {
     logger.error({ err }, 'Failed to get audit logs');
+    throw err;
+  }
+}));
+
+// GET /api/admin/subscribers - Get all active subscribers
+router.get('/subscribers', asyncHandler(async (req, res) => {
+  try {
+    const result = await query(
+      `SELECT u.id, u.discord_id, s.current_period_end
+       FROM users u
+       JOIN subscriptions s ON u.id = s.user_id
+       WHERE s.status IN ('active', 'trialing')
+       ORDER BY u.created_at DESC`
+    );
+
+    const subscribers = result.rows.map(row => ({
+      userId: row.id,
+      discordId: row.discord_id,
+      expiresAt: row.current_period_end,
+      isActive: new Date(row.current_period_end) > new Date(),
+    }));
+
+    res.json({ subscribers });
+  } catch (err) {
+    logger.error({ err }, 'Failed to get subscribers');
+    throw err;
+  }
+}));
+
+// GET /api/admin/grace-period - Get users in grace period
+router.get('/grace-period', asyncHandler(async (req, res) => {
+  try {
+    const gracePeriodUsers = await gracePeriodService.getGracePeriodUsers();
+    res.json({ gracePeriodUsers });
+  } catch (err) {
+    logger.error({ err }, 'Failed to get grace period users');
+    throw err;
+  }
+}));
+
+// POST /api/admin/grace-period/add - Move user to grace period
+router.post('/grace-period/add', asyncHandler(async (req, res) => {
+  const { userId, discordId } = req.body;
+
+  if (!userId || !discordId) {
+    throw new ValidationError('userId and discordId required');
+  }
+
+  try {
+    await gracePeriodService.moveToGracePeriod(userId, discordId);
+    await webhookService.sendWebhook('grace_period.started', { discordId, userId });
+
+    res.json({ success: true, message: 'User moved to grace period' });
+  } catch (err) {
+    logger.error({ err, userId }, 'Failed to add to grace period');
+    throw err;
+  }
+}));
+
+// POST /api/admin/grace-period/remove - Remove from grace period (renewed)
+router.post('/grace-period/remove', asyncHandler(async (req, res) => {
+  const { userId, discordId } = req.body;
+
+  if (!userId || !discordId) {
+    throw new ValidationError('userId and discordId required');
+  }
+
+  try {
+    await gracePeriodService.removeFromGracePeriod(userId, discordId);
+    await webhookService.sendWebhook('subscription.renewed', { discordId, userId });
+
+    res.json({ success: true, message: 'User removed from grace period (renewed)' });
+  } catch (err) {
+    logger.error({ err, userId }, 'Failed to remove from grace period');
+    throw err;
+  }
+}));
+
+// POST /api/admin/grace-period/expire - Expire grace period (not renewed)
+router.post('/grace-period/expire', asyncHandler(async (req, res) => {
+  const { userId, discordId } = req.body;
+
+  if (!userId || !discordId) {
+    throw new ValidationError('userId and discordId required');
+  }
+
+  try {
+    await gracePeriodService.expireGracePeriod(userId, discordId);
+    await webhookService.sendWebhook('grace_period.expired', { discordId, userId });
+
+    res.json({ success: true, message: 'Grace period expired' });
+  } catch (err) {
+    logger.error({ err, userId }, 'Failed to expire grace period');
+    throw err;
+  }
+}));
+
+// PUT /api/admin/users/:userId/grace-dm-preference - Update DM preference
+router.put('/users/:userId/grace-dm-preference', asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const { dmEnabled } = req.body;
+
+  if (typeof dmEnabled !== 'boolean') {
+    throw new ValidationError('dmEnabled must be boolean');
+  }
+
+  try {
+    await gracePeriodService.setDMPreference(userId, dmEnabled);
+
+    res.json({
+      success: true,
+      message: `Grace period DM ${dmEnabled ? 'enabled' : 'disabled'}`
+    });
+  } catch (err) {
+    logger.error({ err, userId }, 'Failed to update DM preference');
     throw err;
   }
 }));
