@@ -9,7 +9,7 @@ const router = express.Router();
 // GET /api/auth/discord - Redirect to Discord OAuth
 router.get('/discord', (req, res) => {
   const authUrl = discordAuthService.getOAuthURL();
-  res.json({ authUrl });
+  res.redirect(authUrl);
 });
 
 // GET /api/auth/discord/callback - Handle Discord OAuth callback
