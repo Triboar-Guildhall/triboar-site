@@ -1,0 +1,136 @@
+{{ define "title" }}Logging in — Triboar Guildhall{{ end }}
+
+{{ define "main" }}
+    <!-- Header -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-5">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
+                    <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="min-h-screen bg-gradient-to-br from-guild-beige-light to-guild-beige flex items-center justify-center py-12 px-5">
+        <div class="max-w-md w-full">
+            <!-- Loading State (shown first) -->
+            <div id="loading-state" class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-guild-blue rounded-full">
+                        <div class="animate-spin">
+                            <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-guild-brown mb-2">Verifying Your Identity</h2>
+                <p class="text-gray-600 mb-4">Connecting with Discord...</p>
+                <p class="text-sm text-gray-500">This should only take a moment.</p>
+            </div>
+
+            <!-- Success State (shown after OAuth completes) -->
+            <div id="success-state" class="bg-white rounded-lg shadow-lg p-8 text-center hidden">
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-guild-brown mb-2">Welcome, Adventurer!</h2>
+                <p id="user-name" class="text-gray-600 mb-6">Preparing your membership...</p>
+                <p class="text-sm text-gray-500 mb-6">You'll be redirected to complete your payment in just a moment.</p>
+                <div class="bg-guild-beige-light p-4 rounded-md mb-6">
+                    <p class="text-sm text-gray-600">
+                        <span class="font-semibold">Monthly Dues:</span><br>
+                        Support the community and unlock full access to all campaigns and events.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Error State (shown if auth fails) -->
+            <div id="error-state" class="bg-white rounded-lg shadow-lg p-8 text-center hidden">
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-guild-brown mb-2">Oops!</h2>
+                <p id="error-message" class="text-gray-600 mb-6">Something went wrong with Discord authentication.</p>
+                <div class="space-y-3">
+                    <a href="{{ "/" | relURL }}" class="block bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">
+                        Back to Home
+                    </a>
+                    <button onclick="location.reload()" class="block w-full border-2 border-guild-blue text-guild-blue px-6 py-3 rounded-md font-semibold bg-transparent hover:bg-guild-blue hover:text-white transition-colors cursor-pointer">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the authorization code from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const error = urlParams.get('error');
+        const errorDescription = urlParams.get('error_description');
+
+        // Handle errors from Discord
+        if (error) {
+            showError(errorDescription || 'Authentication failed. Please try again.');
+        } else if (code) {
+            // Complete the OAuth flow by calling the backend
+            completeOAuth(code);
+        } else {
+            // No code or error - something is wrong
+            showError('No authorization code received. Please try again.');
+        }
+
+        async function completeOAuth(code) {
+            try {
+                // Send the code to our backend to exchange for user info and JWT token
+                const response = await fetch('http://localhost:3000/api/auth/discord/callback?code=' + code);
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    showError(data.error?.message || 'Authentication failed. Please try again.');
+                    return;
+                }
+
+                // OAuth successful - show success state and store token
+                const userName = data.user.discord_username || data.user.email;
+                document.getElementById('user-name').textContent = `Welcome, ${userName}!`;
+                document.getElementById('loading-state').classList.add('hidden');
+                document.getElementById('success-state').classList.remove('hidden');
+
+                // Store JWT token in localStorage
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+
+                // Redirect to checkout after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '{{ "/checkout/" | relURL }}';
+                }, 2000);
+
+            } catch (err) {
+                console.error('OAuth error:', err);
+                showError('Connection error. Please try again.');
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('loading-state').classList.add('hidden');
+            document.getElementById('success-state').classList.add('hidden');
+            document.getElementById('error-state').classList.remove('hidden');
+            document.getElementById('error-message').textContent = message;
+        }
+    </script>
+{{ end }}

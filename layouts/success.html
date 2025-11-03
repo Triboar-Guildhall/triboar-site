@@ -1,0 +1,105 @@
+{{ define "title" }}Welcome to the Guildhall — Triboar Guildhall{{ end }}
+
+{{ define "main" }}
+    <!-- Header -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-5">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
+                    <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="min-h-screen bg-gradient-to-br from-guild-beige-light to-guild-beige flex items-center justify-center py-12 px-5">
+        <div class="max-w-md w-full">
+            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <!-- Success Icon -->
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full">
+                        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Success Message -->
+                <h2 class="text-4xl font-bold text-guild-brown mb-2">Success!</h2>
+                <p class="text-xl text-gray-600 mb-8">Welcome to the Triboar Guildhall</p>
+
+                <!-- Confirmation Details -->
+                <div class="bg-guild-beige-light rounded-lg p-6 mb-8 text-left">
+                    <h3 class="font-semibold text-guild-brown mb-4">What Happens Next</h3>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-green-600 font-bold mr-3">✓</span>
+                            <span>Your membership is now active</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 font-bold mr-3">✓</span>
+                            <span>You'll receive the <strong>@Guild Subscriber</strong> role in Discord</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 font-bold mr-3">✓</span>
+                            <span>Full access to all campaigns and community channels</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 font-bold mr-3">✓</span>
+                            <span>Your role will be assigned within the next few moments</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Details Box -->
+                <div class="border-b border-gray-200 pb-8 mb-8">
+                    <p class="text-sm text-gray-600 mb-4">
+                        <span class="font-semibold">Confirmation ID:</span><br>
+                        <span id="session-id" class="text-xs text-gray-500 break-all">Processing...</span>
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="space-y-3">
+                    <a href="https://discord.gg/triboar" target="_blank" class="block bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">
+                        Go to Discord Server
+                    </a>
+                    <a href="{{ "/" | relURL }}" class="block text-guild-blue no-underline hover:text-guild-blue-dark font-semibold">
+                        Back to Home
+                    </a>
+                </div>
+
+                <!-- Info Footer -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-xs text-gray-500 mb-3">
+                        Having trouble? Make sure you're in the Discord server, and check the #welcome channel for getting started instructions.
+                    </p>
+                    <p class="text-xs text-gray-500">
+                        Questions? Reach out to the moderators in the #support channel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Extract session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        if (sessionId) {
+            document.getElementById('session-id').textContent = sessionId;
+        }
+
+        // Log the success for analytics/tracking
+        fetch('http://localhost:3000/api/checkout/success', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ session_id: sessionId })
+        }).catch(err => console.log('Success logged'));
+    </script>
+{{ end }}

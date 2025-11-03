@@ -1,0 +1,119 @@
+{{ define "title" }}Payment Cancelled — Triboar Guildhall{{ end }}
+
+{{ define "main" }}
+    <!-- Header -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-5">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
+                    <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="min-h-screen bg-gradient-to-br from-guild-beige-light to-guild-beige flex items-center justify-center py-12 px-5">
+        <div class="max-w-md w-full">
+            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <!-- Warning Icon -->
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-yellow-100 rounded-full">
+                        <svg class="w-10 h-10 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <h2 class="text-3xl font-bold text-guild-brown mb-2">Payment Cancelled</h2>
+                <p class="text-gray-600 mb-8">Your membership was not completed.</p>
+
+                <!-- Explanation -->
+                <div class="bg-guild-beige-light rounded-lg p-6 mb-8 text-left">
+                    <h3 class="font-semibold text-guild-brown mb-4">What Happened</h3>
+                    <p class="text-sm text-gray-700 mb-4">
+                        You cancelled the payment process or your payment was declined. Your Triboar Guildhall membership has not been activated.
+                    </p>
+                    <p class="text-sm text-gray-700">
+                        No charges have been made to your payment method.
+                    </p>
+                </div>
+
+                <!-- Common Reasons -->
+                <div class="border-b border-gray-200 pb-8 mb-8">
+                    <h3 class="font-semibold text-guild-brown mb-4 text-left">Common Reasons</h3>
+                    <ul class="text-left text-sm text-gray-700 space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-guild-brown mr-3">•</span>
+                            <span>You clicked the back button or closed the payment page</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-guild-brown mr-3">•</span>
+                            <span>Your payment method was declined by your bank</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-guild-brown mr-3">•</span>
+                            <span>Incorrect payment information was entered</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-guild-brown mr-3">•</span>
+                            <span>Insufficient funds in your account</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="space-y-3">
+                    <button onclick="retryPayment()" class="w-full bg-guild-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-guild-blue-dark transition-colors">
+                        Try Again
+                    </button>
+                    <a href="{{ "/" | relURL }}" class="block text-guild-blue no-underline hover:text-guild-blue-dark font-semibold">
+                        Back to Home
+                    </a>
+                </div>
+
+                <!-- Support -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-600 mb-3">
+                        <span class="font-semibold">Still having issues?</span>
+                    </p>
+                    <p class="text-xs text-gray-500 mb-4">
+                        Check your card details, ensure sufficient funds, or try a different payment method. Contact your bank if payments continue to be declined.
+                    </p>
+                    <a href="https://discord.gg/triboar" target="_blank" class="text-guild-blue no-underline hover:underline text-sm font-semibold">
+                        Get help in Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function retryPayment() {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                // Redirect back to checkout to try again
+                window.location.href = '{{ "/checkout/" | relURL }}';
+            } else {
+                // Need to login again
+                window.location.href = 'http://localhost:3000/api/auth/discord';
+            }
+        }
+
+        // Log the cancellation for analytics
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        if (sessionId) {
+            fetch('http://localhost:3000/api/checkout/cancel', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ session_id: sessionId })
+            }).catch(err => console.log('Cancellation logged'));
+        }
+    </script>
+{{ end }}
