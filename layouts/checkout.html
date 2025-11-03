@@ -62,7 +62,7 @@
                                     <p class="font-semibold text-guild-brown">Triboar Guildhall Membership</p>
                                     <p class="text-sm text-gray-600">Monthly recurring</p>
                                 </div>
-                                <p class="font-bold text-xl text-guild-brown">$5.00<span class="text-sm text-gray-600">/mo</span></p>
+                                <p class="font-bold text-xl text-guild-brown">$6.99<span class="text-sm text-gray-600">/mo</span></p>
                             </div>
                             <div class="bg-guild-beige-light rounded p-4">
                                 <p class="text-sm text-gray-700">
@@ -126,9 +126,26 @@
     </div>
 
     <script>
-        // Check if user is authenticated
-        const token = localStorage.getItem('authToken');
-        const user = JSON.parse(localStorage.getItem('user') || 'null');
+        // Get auth data from URL params or localStorage
+        const urlParams = new URLSearchParams(window.location.search);
+        let token = urlParams.get('token') || localStorage.getItem('authToken');
+        let user = null;
+
+        // If token came from URL, build user object from params
+        if (urlParams.get('token')) {
+            user = {
+                email: urlParams.get('email'),
+                discord_username: urlParams.get('discord_username')
+            };
+            // Save to localStorage for future visits
+            localStorage.setItem('authToken', token);
+            localStorage.setItem('user', JSON.stringify(user));
+            // Clean URL to remove sensitive params
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else {
+            // Try to get from localStorage
+            user = JSON.parse(localStorage.getItem('user') || 'null');
+        }
 
         if (!token || !user) {
             showState('not-auth');

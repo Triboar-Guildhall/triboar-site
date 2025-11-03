@@ -1,6 +1,7 @@
 import express from 'express';
 import { generateToken } from '../../utils/jwt.js';
 import * as discordAuthService from '../../services/discordAuthService.js';
+import * as stripeService from '../../services/stripeService.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
 import logger from '../../utils/logger.js';
 
@@ -39,35 +40,23 @@ router.get('/discord/callback', asyncHandler(async (req, res) => {
     // Handle OAuth callback
     const { user, accessToken } = await discordAuthService.handleOAuthCallback(code);
 
-    // Generate JWT for our app
-    const jwtToken = generateToken({
-      id: user.id,
-      discord_id: user.discord_id,
-      email: user.email,
-      tier: user.tier,
-    });
+    logger.info({ userId: user.id }, 'User authenticated, creating Stripe session');
 
-    // Return token and user info
-    // In a real app, you'd likely redirect with token in query or set secure cookie
-    res.json({
-      success: true,
-      user: {
-        id: user.id,
-        email: user.email,
-        discord_id: user.discord_id,
-        discord_username: user.discord_username,
-        tier: user.tier,
-      },
-      token: jwtToken,
-    });
+    // Create Stripe checkout session directly
+    const checkoutSession = await stripeService.createCheckoutSession(user.id, user.discord_id);
+
+    logger.info({ userId: user.id, sessionId: checkoutSession.id, url: checkoutSession.url }, 'User authenticated and checkout session created');
+
+    // Redirect directly to Stripe checkout
+    res.redirect(checkoutSession.url);
   } catch (err) {
-    logger.error({ err }, 'OAuth callback failed');
-    res.status(401).json({
-      error: {
-        code: 'AUTH_FAILED',
-        message: 'Authentication failed',
-      },
-    });
+    logger.error({
+      err: err.message,
+      errorMessage: err.message,
+      errorStack: err.stack,
+      stripeError: err.raw?.message
+    }, 'OAuth callback failed - checkout session creation error');
+    res.redirect(`http://localhost:1313/triboar-site?error=${encodeURIComponent('Authentication failed. Please try again.')}`);
   }
 }));
 

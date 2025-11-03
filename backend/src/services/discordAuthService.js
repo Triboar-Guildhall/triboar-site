@@ -21,17 +21,29 @@ export const getOAuthURL = () => {
 
 export const exchangeCodeForToken = async (code) => {
   try {
-    const response = await axios.post(TOKEN_ENDPOINT, {
-      client_id: process.env.DISCORD_CLIENT_ID,
-      client_secret: process.env.DISCORD_CLIENT_SECRET,
-      code,
-      grant_type: 'authorization_code',
-      redirect_uri: process.env.DISCORD_REDIRECT_URI,
+    const params = new URLSearchParams();
+    params.append('client_id', process.env.DISCORD_CLIENT_ID);
+    params.append('client_secret', process.env.DISCORD_CLIENT_SECRET);
+    params.append('code', code);
+    params.append('grant_type', 'authorization_code');
+    params.append('redirect_uri', process.env.DISCORD_REDIRECT_URI);
+
+    const response = await axios.post(TOKEN_ENDPOINT, params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     });
 
     return response.data;
   } catch (err) {
-    logger.error({ err }, 'Failed to exchange code for token');
+    logger.error({
+      errorMessage: err.message,
+      statusCode: err.response?.status,
+      discordResponse: err.response?.data,
+      clientId: process.env.DISCORD_CLIENT_ID,
+      redirectUri: process.env.DISCORD_REDIRECT_URI,
+      axiosError: err.isAxiosError,
+    }, 'Failed to exchange code for token');
     throw new UnauthorizedError('Failed to authenticate with Discord');
   }
 };
