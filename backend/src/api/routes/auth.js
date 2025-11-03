@@ -51,10 +51,11 @@ router.get('/discord/callback', asyncHandler(async (req, res) => {
     res.redirect(checkoutSession.url);
   } catch (err) {
     logger.error({
-      err: err.message,
+      errorName: err.name,
       errorMessage: err.message,
       errorStack: err.stack,
-      stripeError: err.raw?.message
+      stripeError: err.raw?.message,
+      fullError: JSON.stringify(err, null, 2)
     }, 'OAuth callback failed - checkout session creation error');
     res.redirect(`http://localhost:1313/triboar-site?error=${encodeURIComponent('Authentication failed. Please try again.')}`);
   }
