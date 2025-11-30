@@ -6,20 +6,20 @@
         <div class="max-w-6xl mx-auto px-5">
             <nav class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/" class="flex items-center no-underline">
+                    <a href="{{ "/" | relURL }}" class="flex items-center no-underline">
                         <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
                         <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
                     </a>
                 </div>
                 <ul class="hidden md:flex space-x-8">
-                    <li><a href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/#how-it-works" class="text-gray-700 font-medium no-underline">How It Works</a></li>
+                    <li><a href="{{ "/" | relURL }}#how-it-works" class="text-gray-700 font-medium no-underline">How It Works</a></li>
                     <li><a href="{{ "setting" | relURL }}" class="text-gray-700 font-medium no-underline">Setting</a></li>
-                    <li><a href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/#community" class="text-gray-700 font-medium no-underline">Community</a></li>
-                    <li><a href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/#dms" class="text-gray-700 font-medium no-underline">DMs</a></li>
+                    <li><a href="{{ "/" | relURL }}#community" class="text-gray-700 font-medium no-underline">Community</a></li>
+                    <li><a href="{{ "/" | relURL }}#dms" class="text-gray-700 font-medium no-underline">DMs</a></li>
                     <li><a href="{{ "faq" | relURL }}" class="text-gray-700 font-medium no-underline">FAQ</a></li>
-                    <li><a href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/#join" class="text-gray-700 font-medium no-underline">Join</a></li>
+                    <li><a href="{{ "/" | relURL }}#join" class="text-gray-700 font-medium no-underline">Join</a></li>
                 </ul>
-                <a href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guildhall</a>
+                <a href="{{ "/" | relURL }}#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guildhall</a>
             </nav>
         </div>
     </header>
@@ -49,7 +49,7 @@
         <div class="max-w-4xl mx-auto px-5">
             <h3 style="font-family: 'Merriweather', 'Georgia', serif;" class="text-3xl font-bold mb-6">Ready to Begin Your Adventure?</h3>
             <p style="font-family: 'Inter', 'Arial', sans-serif;" class="text-xl mb-8 leading-relaxed">Join the Triboar Guildhall and start writing your story in the Forgotten Realms.</p>
-            <a href="{{ .Site.BaseURL | strings.TrimSuffix "/" }}/#join" style="font-family: 'Inter', 'Arial', sans-serif; background-color: #d4a94c; color: #2f3a4f;" class="px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guildhall →</a>
+            <a href="{{ "/" | relURL }}#join" style="font-family: 'Inter', 'Arial', sans-serif; background-color: #d4a94c; color: #2f3a4f;" class="px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guildhall →</a>
         </div>
     </section>
 
@@ -113,45 +113,11 @@
     }
     </style>
 
-    <!-- Footer (same as home page) -->
-    <footer class="bg-gray-800 text-white py-12">
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-5">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h4 class="text-guild-gold font-semibold mb-4">About</h4>
-                    <ul class="space-y-2">
-                        <li><a href="{{ "/" | relURL }}#mission" class="text-gray-300 no-underline hover:text-white">Mission</a></li>
-                        <li><a href="{{ "/" | relURL }}#why-dues" class="text-gray-300 no-underline hover:text-white">Why Dues</a></li>
-                        <li><a href="{{ "charter" | relURL }}" class="text-gray-300 no-underline hover:text-white">Guild Charter</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-guild-gold font-semibold mb-4">Play</h4>
-                    <ul class="space-y-2">
-                        <li><a href="{{ "/" | relURL }}#quest-board" class="text-gray-300 no-underline hover:text-white">Quest Board</a></li>
-                        <li><a href="{{ "/" | relURL }}#calendar" class="text-gray-300 no-underline hover:text-white">Calendar</a></li>
-                        <li><a href="{{ "/" | relURL }}#downtime" class="text-gray-300 no-underline hover:text-white">Downtime</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-guild-gold font-semibold mb-4">Community</h4>
-                    <ul class="space-y-2">
-                        <li><a href="{{ "/" | relURL }}#guidelines" class="text-gray-300 no-underline hover:text-white">Guidelines</a></li>
-                        <li><a href="{{ "/" | relURL }}#safety" class="text-gray-300 no-underline hover:text-white">Safety</a></li>
-                        <li><a href="{{ "/" | relURL }}#volunteers" class="text-gray-300 no-underline hover:text-white">Volunteers</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-guild-gold font-semibold mb-4">For DMs</h4>
-                    <ul class="space-y-2">
-                        <li><a href="{{ "/" | relURL }}#apply" class="text-gray-300 no-underline hover:text-white">Apply</a></li>
-                        <li><a href="{{ "/" | relURL }}#tools" class="text-gray-300 no-underline hover:text-white">Tools</a></li>
-                        <li><a href="{{ "/" | relURL }}#prep" class="text-gray-300 no-underline hover:text-white">Prep Resources</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 pt-4 text-center text-gray-400">
-                © Triboar Guildhall · <a href="{{ "/" | relURL }}#discord" class="text-gray-400 no-underline hover:text-white">Discord</a> · <a href="{{ "/" | relURL }}#email" class="text-gray-400 no-underline hover:text-white">Email</a> · <a href="{{ "/" | relURL }}#terms" class="text-gray-400 no-underline hover:text-white">Terms</a> · <a href="{{ "/" | relURL }}#privacy" class="text-gray-400 no-underline hover:text-white">Privacy</a>
+            <div class="text-center text-gray-400">
+                © Triboar Guildhall · <a href="{{ "terms" | relURL }}" class="text-gray-400 no-underline hover:text-white">Terms</a> · <a href="{{ "privacy" | relURL }}" class="text-gray-400 no-underline hover:text-white">Privacy</a>
             </div>
         </div>
     </footer>
