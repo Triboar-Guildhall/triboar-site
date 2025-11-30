@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+  # Allow manual runs from Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.120.4'
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Tailwind CSS
+        run: npm install tailwindcss@3.4.0
+
+      - name: Build Tailwind CSS
+        run: npx tailwindcss -i ./assets/css/style.css -o ./static/css/output.css --config ./tailwind.config.js --minify
+
+      - name: Build Hugo site
+        run: hugo --minify --environment production
+
+      - name: Add .nojekyll file to prevent Jekyll processing
+        run: cp .nojekyll public/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
