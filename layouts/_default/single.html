@@ -6,20 +6,20 @@
         <div class="max-w-6xl mx-auto px-5">
             <nav class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="{{ "/" | relURL }}" class="flex items-center no-underline">
+                    <a href="{{ .Site.Home.RelPermalink }}" class="flex items-center no-underline">
                         <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
                         <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
                     </a>
                 </div>
                 <ul class="hidden md:flex space-x-8">
-                    <li><a href="{{ "/" | relURL }}#how-it-works" class="text-gray-700 font-medium no-underline">How It Works</a></li>
-                    <li><a href="{{ "setting" | relURL }}" class="text-gray-700 font-medium no-underline">Setting</a></li>
-                    <li><a href="{{ "/" | relURL }}#community" class="text-gray-700 font-medium no-underline">Community</a></li>
-                    <li><a href="{{ "/" | relURL }}#dms" class="text-gray-700 font-medium no-underline">DMs</a></li>
-                    <li><a href="{{ "faq" | relURL }}" class="text-gray-700 font-medium no-underline">FAQ</a></li>
-                    <li><a href="{{ "/" | relURL }}#join" class="text-gray-700 font-medium no-underline">Join</a></li>
+                    <li><a href="{{ .Site.Home.RelPermalink }}#how-it-works" class="text-gray-700 font-medium no-underline">How It Works</a></li>
+                    <li><a href="{{ .Site.Home.RelPermalink }}#setting" class="text-gray-700 font-medium no-underline">Setting</a></li>
+                    <li><a href="{{ .Site.Home.RelPermalink }}#community" class="text-gray-700 font-medium no-underline">Community</a></li>
+                    <li><a href="{{ .Site.Home.RelPermalink }}#dms" class="text-gray-700 font-medium no-underline">DMs</a></li>
+                    <li><a href="{{ .Site.Home.RelPermalink }}#faq" class="text-gray-700 font-medium no-underline">FAQ</a></li>
+                    <li><a href="{{ .Site.Home.RelPermalink }}#join" class="text-gray-700 font-medium no-underline">Join</a></li>
                 </ul>
-                <a href="{{ "/" | relURL }}#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guildhall</a>
+                <a href="{{ .Site.Home.RelPermalink }}#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guildhall</a>
             </nav>
         </div>
     </header>
