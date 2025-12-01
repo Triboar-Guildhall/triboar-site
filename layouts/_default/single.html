@@ -25,6 +25,24 @@
     </header>
 
     <!-- Hero Section -->
+    {{ if .Params.hero_image }}
+    <section class="relative min-h-[500px] md:min-h-[600px] flex items-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="{{ .Params.hero_image | relURL }}" alt="{{ .Title }}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-4xl mx-auto px-5 py-16 w-full text-center">
+            <h1 style="font-family: 'Merriweather', 'Georgia', serif;" class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-wide drop-shadow-lg">{{ .Title }}</h1>
+            <div class="w-24 h-1 bg-guild-gold mx-auto mb-8"></div>
+            {{ if .Params.description }}
+            <p style="font-family: 'Inter', 'Arial', sans-serif;" class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md">{{ .Params.description }}</p>
+            {{ end }}
+        </div>
+    </section>
+    {{ else }}
     <section class="py-16 bg-gradient-to-br from-guild-beige-light to-guild-beige">
         <div class="max-w-4xl mx-auto px-5 text-center">
             <h1 style="font-family: 'Merriweather', 'Georgia', serif;" class="text-5xl md:text-6xl font-bold text-guild-brown mb-6 leading-tight tracking-wide">{{ .Title }}</h1>
@@ -34,6 +52,7 @@
             {{ end }}
         </div>
     </section>
+    {{ end }}
 
     <!-- Page Content -->
     <main class="py-16 bg-gray-50">

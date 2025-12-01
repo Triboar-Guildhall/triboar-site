@@ -2,6 +2,7 @@
 title: "The Forgotten Realms"
 date: 2025-09-28
 description: "Our shared adventures unfold in the Forgotten Realms, one of the most iconic settings in Dungeons & Dragons. It's a land of sweeping coastlines, towering mountains, and deep forests—where legends walk beside common folk, and every road may lead to wonder or danger."
+hero_image: "fr-hero.jpg"
 ---
 
 ## A World Alive with Stories
