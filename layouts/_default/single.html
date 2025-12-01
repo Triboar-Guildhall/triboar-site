@@ -35,20 +35,20 @@
 
         <!-- Content -->
         <div class="relative z-10 max-w-4xl mx-auto px-5 py-16 w-full text-center">
-            <h1 style="font-family: 'Merriweather', 'Georgia', serif;" class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-wide drop-shadow-lg">{{ .Title }}</h1>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-wide drop-shadow-lg">{{ .Title }}</h1>
             <div class="w-24 h-1 bg-guild-gold mx-auto mb-8"></div>
             {{ if .Params.description }}
-            <p style="font-family: 'Inter', 'Arial', sans-serif;" class="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md">{{ .Params.description }}</p>
+            <p class="font-sans text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md">{{ .Params.description }}</p>
             {{ end }}
         </div>
     </section>
     {{ else }}
     <section class="py-16 bg-gradient-to-br from-guild-beige-light to-guild-beige">
         <div class="max-w-4xl mx-auto px-5 text-center">
-            <h1 style="font-family: 'Merriweather', 'Georgia', serif;" class="text-5xl md:text-6xl font-bold text-guild-brown mb-6 leading-tight tracking-wide">{{ .Title }}</h1>
+            <h1 class="font-serif text-5xl md:text-6xl font-bold text-guild-brown mb-6 leading-tight tracking-wide">{{ .Title }}</h1>
             <div class="w-24 h-1 bg-guild-blue mx-auto mb-8"></div>
             {{ if .Params.description }}
-            <p style="font-family: 'Inter', 'Arial', sans-serif;" class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ .Params.description }}</p>
+            <p class="font-sans text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{{ .Params.description }}</p>
             {{ end }}
         </div>
     </section>
@@ -64,73 +64,13 @@
     </main>
 
     <!-- Call to Action -->
-    <section class="py-16 text-white text-center" style="background-color: #2f3a4f;">
+    <section class="py-16 text-white text-center bg-guild-blue-darker">
         <div class="max-w-4xl mx-auto px-5">
-            <h3 style="font-family: 'Merriweather', 'Georgia', serif;" class="text-3xl font-bold mb-6">Ready to Begin Your Adventure?</h3>
-            <p style="font-family: 'Inter', 'Arial', sans-serif;" class="text-xl mb-8 leading-relaxed">Join the Triboar Guildhall and start writing your story in the Forgotten Realms.</p>
-            <a href="{{ "/" | relURL }}#join" style="font-family: 'Inter', 'Arial', sans-serif; background-color: #d4a94c; color: #2f3a4f;" class="px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guildhall →</a>
+            <h3 class="font-serif text-3xl font-bold mb-6">Ready to Begin Your Adventure?</h3>
+            <p class="font-sans text-xl mb-8 leading-relaxed">Join the Triboar Guildhall and start writing your story in the Forgotten Realms.</p>
+            <a href="{{ "/" | relURL }}#join" class="font-sans bg-guild-gold-dark text-guild-blue-darker px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guildhall →</a>
         </div>
     </section>
-
-    <style>
-    /* H2 Section Titles - Following style guide: 1.75-2rem, Bold, Serif */
-    .setting-content h2 {
-        font-family: 'Merriweather', 'Georgia', serif;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #a36a3c;
-        margin-bottom: 2rem;
-        text-align: left;
-        letter-spacing: 0.02em;
-        line-height: 1.3;
-        border-bottom: 2px solid #d4a94c;
-        padding-bottom: 0.5rem;
-    }
-
-    /* Body text - Following style guide: 1rem, Regular, Sans-serif */
-    .setting-content p {
-        font-family: 'Inter', 'Arial', sans-serif;
-        font-size: 1rem;
-        line-height: 1.6;
-        color: #222;
-        margin-bottom: 1.5rem;
-    }
-
-    /* Strong text - Using theme colors */
-    .setting-content strong {
-        font-weight: 600;
-        color: #a36a3c;
-    }
-
-    /* List styling */
-    .setting-content ul {
-        list-style-type: disc;
-        margin-left: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .setting-content ol {
-        list-style-type: decimal;
-        margin-left: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .setting-content li {
-        margin-bottom: 0.5rem;
-        padding-left: 0.5rem;
-    }
-
-    /* Hide the last heading since it's handled by the CTA section */
-    .setting-content > h2:nth-of-type(4) {
-        /* An Invitation - handled by separate section above */
-        display: none;
-    }
-
-    /* Page width following style guide */
-    .setting-content {
-        max-width: 1140px;
-    }
-    </style>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
