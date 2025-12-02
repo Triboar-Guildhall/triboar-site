@@ -12,12 +12,10 @@
                     </a>
                 </div>
                 <ul class="hidden md:flex space-x-8">
+                    <li><a href="{{ .Site.Home.RelPermalink }}#what-makes-us-different" class="text-gray-700 font-medium no-underline">Why Us</a></li>
                     <li><a href="{{ .Site.Home.RelPermalink }}#how-it-works" class="text-gray-700 font-medium no-underline">How It Works</a></li>
-                    <li><a href="{{ .Site.Home.RelPermalink }}#setting" class="text-gray-700 font-medium no-underline">Setting</a></li>
                     <li><a href="{{ .Site.Home.RelPermalink }}#community" class="text-gray-700 font-medium no-underline">Community</a></li>
-                    <li><a href="{{ .Site.Home.RelPermalink }}#dms" class="text-gray-700 font-medium no-underline">DMs</a></li>
-                    <li><a href="{{ .Site.Home.RelPermalink }}#faq" class="text-gray-700 font-medium no-underline">FAQ</a></li>
-                    <li><a href="{{ .Site.Home.RelPermalink }}#join" class="text-gray-700 font-medium no-underline">Join</a></li>
+                    <li><a href="{{ .Site.Home.RelPermalink }}#membership" class="text-gray-700 font-medium no-underline">Membership</a></li>
                 </ul>
                 <a href="{{ .Site.Home.RelPermalink }}#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guildhall</a>
             </nav>
@@ -67,17 +65,11 @@
     <section class="py-16 text-white text-center bg-guild-blue-darker">
         <div class="max-w-4xl mx-auto px-5">
             <h3 class="font-serif text-3xl font-bold mb-6">Ready to Begin Your Adventure?</h3>
-            <p class="font-sans text-xl mb-8 leading-relaxed">Join the Triboar Guildhall and start writing your story in the Forgotten Realms.</p>
+            <p class="font-sans text-xl mb-8 leading-relaxed">Your first 30 days are free — and for a limited time, trial periods are extended to 90 days. Start your adventure today.</p>
             <a href="{{ "/" | relURL }}#join" class="font-sans bg-guild-gold-dark text-guild-blue-darker px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guildhall →</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-6xl mx-auto px-5">
-            <div class="text-center text-gray-400">
-                © Triboar Guildhall · <a href="{{ "terms" | relURL }}" class="text-gray-400 no-underline hover:text-white">Terms</a> · <a href="{{ "privacy" | relURL }}" class="text-gray-400 no-underline hover:text-white">Privacy</a>
-            </div>
-        </div>
-    </footer>
+    {{ partial "footer.html" . }}
 {{ end }}

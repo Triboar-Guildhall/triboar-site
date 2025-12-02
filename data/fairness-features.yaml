@@ -1,0 +1,13 @@
+features:
+  - title: "One Price, No Tiers"
+    icon: "check-circle"
+    description: "Everyone contributes equally to the world we're building. There are no premium levels, paid advantages, or \"VIP players.\" Every member stands on the same ground."
+  - title: "Unlimited Access for Every Member"
+    icon: "arrows-expand"
+    description: "Your membership includes **unlimited quests**, **roleplay scenes**, and **downtime activities**. Join missions whenever you're ready, write at your own pace, and build your character's story freely."
+  - title: "No Pay-to-Play — and No Pay-to-Win"
+    icon: "shield-check"
+    description: "Gold, XP, and items must be earned through storytelling and gameplay. You can't buy power here — every achievement is the result of your choices and your creativity."
+  - title: "Flexible, Pause-Anytime Membership"
+    icon: "calendar"
+    description: "Membership is **month-to-month**, with the ability to pause whenever life gets busy. No long-term commitments, no penalties."

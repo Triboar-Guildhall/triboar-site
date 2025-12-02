@@ -1,0 +1,10 @@
+features:
+  - title: "A Quest Guarantee"
+    icon: "compass"
+    description: "We guarantee that there will always be at least **one quest available to join every month**. If, for some reason, we cannot offer you a quest that month, **your next month is free**."
+  - title: "Attentive Moderation & Support"
+    icon: "users"
+    description: "Our moderation team helps keep the Guildhall safe, welcoming, and creatively rich. If you have questions, concerns, or need help navigating the world or tools, staff are available to assist."
+  - title: "Tools That Support You"
+    icon: "wrench"
+    description: "Play-by-post tools — especially Avrae — can be complex at first. We provide clear guides, templates, and optional assistance so you can focus on writing and play, not fumbling with commands."

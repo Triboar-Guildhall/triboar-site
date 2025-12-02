@@ -1,0 +1,11 @@
+items:
+  - title: "Dungeon Masters"
+    description: "DMs receive **free membership** in exchange for running quests in the shared world. We provide scheduling support, worldbuilding input, and a collaborative community of fellow storytellers."
+    link_text: "Apply to DM"
+    link_url: "#apply-dm"
+    color: "blue"
+  - title: "Volunteers"
+    description: "Members may earn dues credit by helping with moderation, maps, rules upkeep, lore archiving, or other community needs. These roles are **contributions**, not premium tiers — and never grant in-game advantages."
+    link_text: "Volunteer to Help"
+    link_url: "#volunteer"
+    color: "brown"
