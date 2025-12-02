@@ -13,7 +13,7 @@ At Triboar Guildhall, we are committed to protecting your privacy and ensuring t
 
 ### Information You Provide
 
-When you join the Triboar Guildhall, we collect:
+When you join the Guild, we collect:
 
 - **Account Information**: Discord username, email address
 - **Payment Information**: Payment details processed through our payment processor (we do not store credit card information)
