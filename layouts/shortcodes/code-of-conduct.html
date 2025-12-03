@@ -1,0 +1,60 @@
+{{ $data := index .Site.Data.charter "code-of-conduct" }}
+
+<div class="space-y-6 my-12">
+    {{ range $data.rules }}
+    <div class="bg-white rounded-lg shadow p-6 border-l-4 border-gray-200">
+        <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-guild-blue rounded-full flex items-center justify-center text-white font-bold text-lg">{{ .number }}</div>
+            <div class="flex-1">
+                <h3 class="font-serif text-xl font-semibold text-guild-brown mb-3">{{ .title }}</h3>
+
+                {{ if .description }}
+                <p class="font-sans text-gray-700 mb-0">{{ .description | markdownify }}</p>
+                {{ end }}
+
+                {{ if .intro }}
+                <p class="font-sans text-gray-700 mb-0">{{ .intro }}</p>
+                {{ end }}
+
+                {{ if .items }}
+                <ul class="font-sans text-gray-600 space-y-1 ml-4">
+                    {{ range .items }}
+                    <li class="flex items-start"><span class="text-guild-blue mr-2">•</span><span>{{ . | markdownify }}</span></li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+
+                {{ if .footer }}
+                <p class="font-sans text-gray-700 mt-2 {{ if eq .number 4 }}font-semibold text-guild-brown{{ end }}">{{ .footer }}</p>
+                {{ end }}
+
+                {{ if .subsections }}
+                <div class="space-y-4">
+                    {{ range .subsections }}
+                    <div>
+                        <h4 class="font-sans font-semibold text-gray-800 mb-2">{{ .subtitle }}</h4>
+                        {{ if .description }}
+                        <p class="font-sans text-gray-700">{{ .description | markdownify }}</p>
+                        {{ end }}
+                        {{ if .intro }}
+                        <p class="font-sans text-gray-700 mb-2">{{ .intro | markdownify }}</p>
+                        {{ end }}
+                        {{ if .items }}
+                        <ul class="font-sans text-gray-600 space-y-1 ml-4">
+                            {{ range .items }}
+                            <li class="flex items-start"><span class="text-guild-blue mr-2">•</span><span>{{ . }}</span></li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                        {{ if .footer }}
+                        <p class="font-sans text-gray-700 mt-2">{{ .footer }}</p>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>

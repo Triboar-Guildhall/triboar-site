@@ -1,0 +1,20 @@
+equal_access:
+  title: "Equal Access"
+  intro: "All members receive:"
+  benefits:
+    - "Unlimited quests"
+    - "Unlimited roleplay scenes"
+    - "Full downtime system access"
+    - "Attentive moderation and support"
+    - "Tools and guides to assist with PBP play and Avrae"
+
+dues:
+  title: "Dues & Contributions"
+  points:
+    - "Month-to-month, equal for all."
+    - "DMs play free. Volunteers earn credit."
+
+quest_guarantee:
+  title: "Quest Guarantee"
+  description: "At least **one quest you can join** each month."
+  promise: "If we can't deliver, your next month is free."

@@ -1,0 +1,53 @@
+{{ $data := .Site.Data.charter.membership }}
+
+<div class="grid md:grid-cols-2 gap-12 my-12 items-start">
+    <!-- Left side: Equal Access checklist -->
+    <div>
+        <h3 class="font-serif text-2xl font-semibold text-guild-brown mb-6">{{ $data.equal_access.title }}</h3>
+        <p class="font-sans text-gray-600 mb-4">{{ $data.equal_access.intro }}</p>
+        <ul class="space-y-3">
+            {{ range $data.equal_access.benefits }}
+            <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-guild-blue mr-3 mt-0.5 flex-shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                <span class="font-sans text-gray-700">{{ . }}</span>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+
+    <!-- Right side: Parchment-style box -->
+    <div class="relative">
+        <!-- Iron Nail -->
+        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 shadow-md"></div>
+            <div class="w-1 h-2 bg-gray-600 mx-auto shadow-sm"></div>
+        </div>
+
+        <!-- Posted Notice -->
+        <div class="relative bg-gradient-to-br from-amber-50 to-yellow-100 p-8 transform rotate-1 hover:rotate-0 transition-transform duration-300 border-[3px] border-parchment-border shadow-parchment">
+            <!-- Decorative corners -->
+            <div class="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-guild-brown opacity-40"></div>
+            <div class="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-guild-brown opacity-40"></div>
+            <div class="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-guild-brown opacity-40"></div>
+            <div class="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-guild-brown opacity-40"></div>
+
+            <div class="text-center relative">
+                <!-- Dues Section -->
+                <h3 class="font-serif text-xl font-bold text-guild-brown mb-4">{{ $data.dues.title }}</h3>
+                {{ range $data.dues.points }}
+                <p class="font-sans text-gray-700 text-sm mb-2">{{ . }}</p>
+                {{ end }}
+
+                <!-- Divider -->
+                <div class="border-t-2 border-guild-gold my-6"></div>
+
+                <!-- Quest Guarantee -->
+                <h3 class="font-serif text-xl font-bold text-guild-brown mb-4">{{ $data.quest_guarantee.title }}</h3>
+                <p class="font-sans text-gray-700 text-sm mb-2">{{ $data.quest_guarantee.description | markdownify }}</p>
+                <p class="font-sans text-guild-blue text-sm font-semibold">{{ $data.quest_guarantee.promise }}</p>
+            </div>
+        </div>
+    </div>
+</div>

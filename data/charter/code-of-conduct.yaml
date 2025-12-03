@@ -1,0 +1,79 @@
+rules:
+  - number: 1
+    title: "Engage Respectfully"
+    intro: "Treat players, DMs, and staff with respect and kindness. This includes:"
+    items:
+      - "No harassment or hate speech"
+      - "No discrimination (race, gender, orientation, disability, religion, etc.)"
+      - "Inclusive language and respectful storytelling"
+      - "PG-13 content limits (no ERP; avoid excessive gore)"
+      - "Use content warnings and spoiler tags for sensitive topics"
+
+  - number: 2
+    title: "Maintain IC/OOC Boundaries"
+    items:
+      - "Use designated in-character and out-of-character channels appropriately"
+      - "Brief OOC notes in IC channels should be tagged: `(OOC: …)` or `[[OOC: …]]`"
+      - "Do not break immersion intentionally or derail scenes with OOC chatter"
+
+  - number: 3
+    title: "Respect DM Authority"
+    description: "Dungeon Masters guide scenes and adjudicate rules. If you disagree with a ruling, discuss it politely in private or OOC **after** the moment, not during play."
+
+  - number: 4
+    title: "Player Consent is Required"
+    intro: "You may not control, harm, or alter another player's character without explicit OOC consent. This includes:"
+    items:
+      - "Forced movement"
+      - "Charm/domination effects"
+      - "PvP actions"
+      - "Narrative consequences affecting another player"
+    footer: "Always check first."
+
+  - number: 5
+    title: "Practice Fair Play"
+    items:
+      - "**No metagaming:** Do not act on information your character doesn't have"
+      - "**No god-modding:** Do not dictate another character's actions or outcomes"
+      - "**No power-gaming:** Avoid exploiting mechanics to overshadow others"
+    footer: "Our goal is rich storytelling, not mechanical domination."
+
+  - number: 6
+    title: "Respect Pacing Requirements"
+    intro: "Our play-by-post quests move at a steady pace so everyone can enjoy the story."
+    items:
+      - "During active quests, **please respond within 24 hours**"
+      - "If you need more time, communicate with your group or DM — we're flexible if you speak up"
+      - "In combat or time-sensitive moments, if you miss the 24-hour window, your character may take a default action (usually **Dodge**)"
+      - "Repeated pacing issues may result in being removed from that quest, but *never* punished outside it"
+    footer: "This protects momentum and honors everyone's time."
+
+  - number: 7
+    title: "Use Channels Appropriately"
+    items:
+      - "Post in the correct channels"
+      - "Keep memes, jokes, or unrelated chatter in OOC areas"
+      - "No NSFW, political debates, or inflammatory content"
+      - "No advertising or soliciting without admin approval"
+
+  - number: 8
+    title: "Leaving or Taking a Break"
+    subsections:
+      - subtitle: "Pausing Membership"
+        intro: "Pausing your subscription is always allowed and requires no staff approval. When you pause:"
+        items:
+          - "You remain in the server"
+          - "You keep your character records"
+          - "You retain access to general community channels"
+          - "You simply lose access to quests, roleplay, and downtime activities until you resume"
+        footer: "Pausing is part of our membership guarantee — use it whenever you need to."
+
+      - subtitle: "Leaving the Discord Server"
+        intro: "Leaving the server should only be done **with notification to staff**. If you leave without notice:"
+        items:
+          - "Your characters and progress may be archived or deleted"
+          - "You may forfeit active characters and rewards"
+        footer: "We cannot hold character records indefinitely for players who depart without communication."
+
+      - subtitle: "Health & Personal Leave"
+        description: "If you need an extended break for personal or health reasons, message the moderators. We can place your characters on **Health Leave**, preserving their records until you're ready to return."

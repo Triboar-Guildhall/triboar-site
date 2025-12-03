@@ -1,0 +1,12 @@
+sections:
+  - title: "Moderation Philosophy"
+    icon: "lightbulb"
+    description: "Educate first. Correct behavior when needed. Prioritize community safety. Remove harmful actors quickly."
+
+  - title: "Enforcement"
+    icon: "shield"
+    description: "Violations of **Respect** or **Consent** may result in immediate removal. Other issues typically receive a warning first. Repeated problems or hostility toward staff may result in suspension or a ban."
+
+  - title: "Getting Help"
+    icon: "chat"
+    description: "If you encounter issues — rules questions, technical challenges, interpersonal concerns — contact the moderation team or admins. We are here to help."

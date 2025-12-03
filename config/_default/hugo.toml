@@ -1,3 +1,9 @@
 baseURL = '/'
 languageCode = 'en-us'
 title = 'Triboar Guildhall — Westmarches D&D Community'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true

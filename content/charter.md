@@ -1,55 +1,48 @@
 ---
 title: "Triboar Guildhall Charter"
-date: 2025-09-28
-description: "The Triboar Guildhall exists to bring together storytellers, writers, and roleplayers who want to explore the Forgotten Realms through collaborative, play-by-post adventures."
+description: "A Community of Collaborative Storytelling"
+hero_image: "guildhall-charter.jpg"
 ---
 
 ## Purpose
 
-The Triboar Guildhall exists to bring together storytellers, writers, and roleplayers who want to explore the Forgotten Realms through collaborative, play-by-post adventures. Our goal is to create a space where creativity thrives, stories unfold at their own pace, and everyone feels welcome at the table.
+The Triboar Guildhall is a play-by-post Westmarches community set in a persistent, evolving Forgotten Realms.
+We bring players together around collaborative storytelling, fair and equal access, respectful interactions, and creative play on your own schedule.
+This charter outlines our values, expectations, and commitments.
+
+---
 
 ## Core Values
 
-**Collaboration** – Storytelling here is shared. Every character matters, every post builds on the last.
+{{< values-grid >}}
 
-**Respect** – We honor each other's time, contributions, and creative choices.
-
-**Consistency** – Reliability helps our stories grow. When you commit to a game, your fellow players depend on you.
-
-**Imagination** – We celebrate bold ideas, unusual characters, and original twists.
-
-**Growth** – We encourage learning, feedback, and the chance to try new styles of play.
+---
 
 ## Membership
 
-Membership is open to all who share our passion for storytelling and agree to abide by this charter.
+{{< membership-section >}}
 
-Members may participate in one or more campaigns, join community discussions, and contribute to world-building efforts.
-
-Members are expected to contribute to the community both in and out of character, whether by writing, helping organize, or supporting others.
-
-## Dues
-
-Dues help cover the costs of running the server and ensuring the community has the resources it needs to thrive.
-
-Members in good standing who contribute dues gain full access to play-by-post campaigns, resources, and community activities.
+---
 
 ## Code of Conduct
 
-Treat others with courtesy. Discrimination, harassment, or personal attacks will not be tolerated.
+The Guildhall thrives on trust and communication. All members are expected to:
 
-Keep disagreements respectful—focus on ideas, not people.
+{{< code-of-conduct >}}
 
-Respect content boundaries. If a theme makes you uncomfortable, communicate clearly and kindly.
+---
 
-Uphold the spirit of fair play. Metagaming and rule-bending undermine the shared story.
+## Support & Moderation
 
-## Governance
+We aim to maintain a constructive, safe, and enjoyable community.
+{.text-center}
 
-The Guildhall is guided by the Guild Council, a small group of volunteer moderators and organizers.
+{{< moderation-section >}}
 
-The Council helps organize campaigns, resolve disputes, and manage resources.
+---
 
-## Amendments
+## A Living Community
 
-This charter may be amended by consensus of the Guild Council, with input from members. The guiding principle is always to preserve fairness, creativity, and community spirit.
+This Charter reflects our ongoing commitment to fairness, creativity, and shared storytelling.
+As the Guildhall grows, we may refine or expand this Charter — always with transparency and community well-being in mind.
+
