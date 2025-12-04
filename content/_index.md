@@ -1,8 +1,4 @@
 ---
-title: "Hello World"
-date: 2025-09-26
+title: "Triboar Guildhall — Westmarches D&D Community"
+description: "A play-by-post Westmarches D&D community set in the Forgotten Realms. Join collaborative storytelling, fair membership, and flexible asynchronous play."
 ---
-
-# Hello World!
-
-Welcome to your Hugo site. This is working perfectly!
