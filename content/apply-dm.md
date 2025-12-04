@@ -1,6 +1,6 @@
 ---
 title: "Apply to DM"
-description: "Run quests and shape the world of Triboar Guildhall"
+description: "Become a Dungeon Master at Triboar Guildhall. Run quests in our shared Forgotten Realms setting and receive free membership while actively running games."
 ---
 
 ## Become a Dungeon Master

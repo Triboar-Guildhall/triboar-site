@@ -2,6 +2,10 @@ baseURL = '/'
 languageCode = 'en-us'
 title = 'Triboar Guildhall — Westmarches D&D Community'
 
+[params]
+  description = "A play-by-post Westmarches D&D community set in the Forgotten Realms. Join collaborative storytelling, fair membership, and flexible asynchronous play."
+  defaultImage = "og-image.png"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.parser]

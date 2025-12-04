@@ -1,6 +1,7 @@
 ---
 title: "Application Submitted"
-description: "Thank you for your interest in Triboar Guildhall"
+description: "Your application to Triboar Guildhall has been received. Our staff will review it and reach out to you soon."
+robots: "noindex, nofollow"
 ---
 
 ## Thank You!

@@ -1,6 +1,6 @@
 ---
 title: "Our Promise on Fairness"
-description: "One Price. One Community."
+description: "One price, one community. At Triboar Guildhall, every member pays the same dues and receives the same access — no tiers, no pay-to-win."
 hero_image: "price-hero.jpg"
 ---
 

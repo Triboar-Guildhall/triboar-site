@@ -4,10 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-    <meta name="description" content="{{ block "description" . }}{{ .Site.Params.description | default "A sustainable Westmarches D&D world: consistent quests, supported DMs, fair single dues." }}{{ end }}">
+
+    <!-- SEO Meta Tags -->
+    {{ partial "seo.html" . }}
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="{{ "css/output.css" | relURL }}">
 </head>
 <body>

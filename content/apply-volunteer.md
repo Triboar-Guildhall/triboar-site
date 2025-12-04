@@ -1,6 +1,6 @@
 ---
 title: "Volunteer to Help"
-description: "Contribute to the Triboar Guildhall community"
+description: "Contribute to Triboar Guildhall as a volunteer. Help with moderation, maps, lore, tools, or onboarding and earn dues credits for your contributions."
 ---
 
 ## Become a Volunteer

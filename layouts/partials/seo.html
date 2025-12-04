@@ -1,0 +1,83 @@
+{{- $title := .Title | default .Site.Title -}}
+{{- $description := .Description | default .Params.description | default .Site.Params.description | default "A play-by-post Westmarches D&D community set in the Forgotten Realms." -}}
+{{- $canonicalURL := .Permalink -}}
+{{- $siteName := .Site.Title -}}
+
+{{/* Determine the image for social sharing */}}
+{{- $image := "" -}}
+{{- if .Params.hero_image -}}
+    {{- $image = (.Params.hero_image | absURL) -}}
+{{- else if .Site.Params.defaultImage -}}
+    {{- $image = (.Site.Params.defaultImage | absURL) -}}
+{{- else -}}
+    {{- $image = ("logo.png" | absURL) -}}
+{{- end -}}
+
+{{- $robots := .Params.robots | default "index, follow" -}}
+
+<!-- Primary Meta Tags -->
+<meta name="title" content="{{ $title }}">
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="Triboar Guildhall">
+<meta name="robots" content="{{ $robots }}">
+<link rel="canonical" href="{{ $canonicalURL }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ $canonicalURL }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:image" content="{{ $image }}">
+<meta property="og:site_name" content="{{ $siteName }}">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ $canonicalURL }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $image }}">
+
+<!-- Additional SEO -->
+<meta name="theme-color" content="#2C3E50">
+<meta name="application-name" content="Triboar Guildhall">
+
+{{- if .IsPage }}
+<!-- Article specific meta -->
+{{- if .Date }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
+{{- if .Lastmod }}
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
+{{- end }}
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "{{ if .IsHome }}WebSite{{ else }}WebPage{{ end }}",
+    "name": "{{ $title }}",
+    "description": "{{ $description }}",
+    "url": "{{ $canonicalURL }}"{{ if .IsHome }},
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ .Site.BaseURL }}?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }{{ end }}
+}
+</script>
+
+{{- if .IsHome }}
+<!-- Organization structured data for homepage -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Triboar Guildhall",
+    "description": "A play-by-post Westmarches D&D community set in the Forgotten Realms.",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": "{{ "logo.png" | absURL }}"
+}
+</script>
+{{- end }}
