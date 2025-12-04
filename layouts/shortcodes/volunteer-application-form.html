@@ -73,7 +73,7 @@ document.getElementById('volunteer-application-form').addEventListener('submit',
     });
 
     if (response.ok) {
-      window.location.href = '/application-submitted/';
+      window.location.href = '{{ "application-submitted/" | relURL }}';
     } else {
       alert('There was a problem submitting your application. Please try again.');
     }

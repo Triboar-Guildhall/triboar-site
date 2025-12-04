@@ -76,7 +76,7 @@ document.getElementById('dm-application-form').addEventListener('submit', async 
     });
 
     if (response.ok) {
-      window.location.href = '/application-submitted/';
+      window.location.href = '{{ "application-submitted/" | relURL }}';
     } else {
       alert('There was a problem submitting your application. Please try again.');
     }

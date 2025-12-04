@@ -18,7 +18,7 @@
         <h3 class="font-serif text-2xl font-semibold mb-4 {{ $textColor }}">{{ .title }}</h3>
         <div class="font-sans text-base leading-relaxed {{ $textColor }} mb-6 flex-grow">{{ .description | markdownify }}</div>
         <div class="text-center">
-            <a href="{{ .link_url }}" class="inline-block px-6 py-3 bg-white {{ if eq .color "blue" }}text-guild-blue{{ else if eq .color "brown" }}text-guild-brown{{ end }} rounded-md font-semibold no-underline hover:opacity-90 transition-opacity">{{ .link_text }}</a>
+            <a href="{{ .link_url | relURL }}" class="inline-block px-6 py-3 bg-white {{ if eq .color "blue" }}text-guild-blue{{ else if eq .color "brown" }}text-guild-brown{{ end }} rounded-md font-semibold no-underline hover:opacity-90 transition-opacity">{{ .link_text }}</a>
         </div>
     </div>
     {{ end }}
