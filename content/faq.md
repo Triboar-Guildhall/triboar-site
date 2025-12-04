@@ -1,114 +1,229 @@
 ---
 title: "Triboar Guildhall FAQ"
 date: 2025-09-28
-description: "Everything you need to know about joining our play-by-post community in the Forgotten Realms."
+description: "Everything you need to know about joining our play-by-post D&D community in the Forgotten Realms."
 ---
 
-## What is Triboar Guildhall?
+## About the Guildhall
 
-Triboar Guildhall is a play-by-post (PbP) community for tabletop roleplaying games, primarily set in the Forgotten Realms. We're writers, storytellers, and adventurers who build shared stories one post at a time.
+### What is Triboar Guildhall?
 
-## What is play-by-post?
+Triboar Guildhall is a play-by-post (PbP) Dungeons & Dragons community set in the Forgotten Realms. We're writers, storytellers, and adventurers who build shared narratives one post at a time in a persistent Westmarches-style world.
 
-Play-by-post (PbP) means the game unfolds through written posts in Discord instead of live voice sessions. Each player writes their character's actions, thoughts, and dialogue; the Dungeon Master (DM) responds with narration, NPCs, and the unfolding story.
+### What is play-by-post?
 
-PbP is:
+Play-by-post means the game unfolds through written posts instead of live sessions.
 
-- **Flexible** – write when you can, no need to schedule a full session.
-- **Immersive** – explore characters in greater depth, with time for detailed writing.
-- **Collaborative** – the story grows from everyone's contributions.
+- You write your character's actions, thoughts, and dialogue.
+- The DM responds with narration and NPC actions.
+- The story advances one post at a time.
 
-## Do I need to know D&D rules to join?
+It's ideal for anyone who can't always attend scheduled sessions and enjoys thoughtful, creative roleplay.
 
-Not at all! While we mostly play in the Dungeons & Dragons 5e 2024 ruleset, many members come for the storytelling first. The Guildhall is a supportive place to learn the rules as you go.
+### What makes this community different?
 
-## What makes this community different?
+A few things:
 
-- **Writing-focused:** we emphasize strong narrative and character writing.
-- **Shared world:** all games take place in the same ongoing Forgotten Realms setting.
-- **Community-driven:** members help shape adventures, lore, and the overall feel of the Guildhall.
-- **Fair and respectful:** guided by our Charter and Code of Conduct.
+- **Writing-first:** We emphasize character, story, and prose.
+- **Flexible play:** Asynchronous posting means you play on your schedule.
+- **Shared world:** All quests shape the same evolving Forgotten Realms setting.
+- **Fair membership:** One price, no premium tiers, no purchased power.
+- **Guides & tools:** Support for both play-by-post and tools like Avrae.
 
-## How do I become a member?
+### Is this just for beginners?
 
-1. Join the Discord server.
-2. Introduce yourself in the welcome channel.
-3. Review the Guild Charter and agree to the Code of Conduct.
-4. Support the Guild by contributing dues (see below).
-5. Once approved, you'll gain access to campaigns, character creation, and writing channels.
+No. We welcome both experienced players and those new to PbP or 5e.
 
-## Why are there dues?
+- Veterans enjoy structure, consistency, and a stable world.
+- New players get tools and support without being treated like beginners.
 
-Running a high-quality PbP server takes time, energy, and resources. Dues help cover costs such as:
+---
 
-- Server and tool hosting
-- Digital resources for players and DMs
-- Art, maps, and reference materials
-- Community events and activities
+## Membership & Dues
 
-Dues ensure the Guildhall remains sustainable and fair for everyone.
+### How do I become a member?
 
-## How much are dues?
+1. **Join the Guild** – Start your membership on our website. Every new subscription includes a **30-day free trial**
+   (*for a limited time, trials are extended to **90 days***).
+2. **Join the Discord server** – You'll receive the invite link after subscribing.
+3. **Create a character** – Follow our step-by-step guide.
+4. **Start playing** – Once approved, you can join quests, roleplay scenes, and downtime activities.
 
-Dues are intentionally kept modest to remain accessible. Specific amounts and payment instructions are available in the server.
+### How much are dues?
 
-## What is the Guild Council?
+Membership is **$9 USD per month**, billed after your **30-day free trial**
+(*or promotional 90-day trial*).
 
-The Guild Council is a small group of moderators and organizers who help keep the Guildhall running smoothly. They:
+- Equal dues for everyone
+- No premium tiers
+- No paid mechanical advantages
+- Pause anytime with no penalty
 
-- Support Dungeon Masters
-- Mediate conflicts
-- Manage dues and resources
-- Maintain the setting and lore
+### Why are there dues?
 
-## How are campaigns run?
+Dues help support:
 
-- Each campaign is led by a Dungeon Master.
-- Players post their actions in campaign threads.
-- Posts may include dice rolls, narration, and dialogue.
-- DMs keep the story moving, ensuring a balance of pace and depth.
+- Bot and server hosting
+- Maps, art assets, and world resources
+- Moderation and staff work
+- Downtime systems, crafting rules, and record-keeping
 
-## How fast do I need to post?
+They ensure long-term sustainability and fairness.
 
-Most campaigns aim for several posts per week, but pace varies by group. Communication is key—if life gets busy, let your DM and fellow players know.
+### What do I get with membership?
 
-## What kind of characters can I play?
+Every member receives:
 
-We welcome all sorts of adventurers, as long as they fit within the Forgotten Realms setting. Exotic races or unusual backstories may need DM approval, but creativity is encouraged.
+- **Unlimited quests**, roleplay scenes, and downtime activities
+- Access to a **persistent, shared Forgotten Realms**
+- Structured downtime systems (jobs, crafting, hunting, fishing, etc.)
+- **Quest Guarantee:** At least one quest you can join each month—or your next month is free
+- Guides and support for PbP and Avrae
+- A fair, respectful community guided by the Charter
 
-## Are homebrew rules allowed?
+### Is this pay-to-play or pay-to-win?
 
-Yes—with DM approval. Some campaigns use official rules only, while others allow homebrew. The Guild Council and DMs coordinate to keep things balanced.
+No. You cannot pay for XP, items, gold, or power.
+Membership influences **access**, not **character strength**.
 
-## How do I become a DM?
+### Can I pause my membership?
 
-Dungeon Masters are always in demand! Interested members should:
+Yes.
 
-- Have some familiarity with 5e 2024 rules
-- Be reliable in posting regularly
-- Have a story idea that fits the shared setting
-- Talk with the Guild Council for approval and support
+- Pause anytime—no staff approval needed.
+- You remain in the server and keep your character records.
+- You simply lose access to quest/roleplay/downtime channels until you resume.
 
-## Can I be in more than one campaign?
+### What happens if I leave the Discord server?
 
-Yes, as long as you can keep up with the posting pace in each. Balance is encouraged so no story suffers from neglect.
+Leaving the server (not the same as pausing membership) should only be done **with notification to staff**.
 
-## How do disputes get resolved?
+Leaving without notice may result in:
 
-Most issues can be solved with respectful conversation. If needed, the Guild Council will step in to mediate, guided by the Code of Conduct.
+- Character records being archived or deleted
+- Forfeiture of active characters and rewards
 
-## How do I leave the Guildhall?
+If you may return, pausing is the better option.
 
-Life happens! If you need to step away, just let your DM or the Council know. You'll always be welcome back.
+---
 
-## Can I invite friends?
+## Play & Pacing
 
-Yes! We grow through community and welcome referrals. Please make sure friends understand the Charter and FAQ before joining.
+### What system do you use?
 
-## Where can I learn more about the Forgotten Realms?
+We use **Dungeons & Dragons 5e (2024 rules)** as our base system, with some documented house rules.
 
-The Guildhall includes a Setting Guide with key details about the Realms, plus links to deeper lore for those who want to explore further.
+### How fast do I need to post?
 
-## Still have questions?
+For quests:
 
-Reach out to the Guild Council in the server—we're here to help you find your place in the story.
+- Please post within **24 hours** during active play.
+- If you can't post, communicate with your DM/group.
+- Missing 24 hours in combat may cause your character to take a **default action** (usually Dodge).
+- Repeated pacing issues in a quest may result in removal from that quest only.
+
+Open RP scenes move more loosely, but communication is always appreciated.
+
+### How many quests can I be in at once?
+
+Each **character** may only join **one quest at a time**.
+
+You may use different characters to participate in multiple quests, as long as you meet pacing expectations.
+
+### Can I have multiple characters?
+
+Yes. You unlock additional character slots as you play:
+
+- Reach **Level 5** → 2nd character slot
+- Reach **Level 10** → 3rd slot
+- Reach **Level 15** → 4th slot
+- Reach **Level 20** → 5th slot
+
+Each character must be created through the Guildhall process.
+
+### Do I have to use Avrae or other bots?
+
+We use **Avrae** extensively for:
+
+- Dice rolls
+- Combat automation
+- Downtime systems
+- **Inventory tracking**
+
+We provide guides, templates, and staff support.
+Our goal is smooth play, not technical stress.
+
+---
+
+## Characters & Rules
+
+### What kind of characters can I play?
+
+We use **core D&D sourcebooks** (2014 + 2024), not third-party or partner content.
+
+Characters may originate from other D&D settings (Eberron, Ravenloft, Ravnica, etc.) as long as they can fit into the Forgotten Realms.
+
+Starting characters begin at **Level 3**.
+
+### Are homebrew rules or content allowed?
+
+Possibly.
+There is a review process for homebrew submissions.
+
+- Evaluated case-by-case
+- High priority on maintaining mechanical balance
+- Approved content is documented for consistency
+
+Balance and fairness remain core principles.
+
+---
+
+## DMs, Volunteers, and Support
+
+### How do I become a DM?
+
+Dungeon Masters are welcome. To DM, you should:
+
+- Understand 5e 2024 rules
+- Meet pacing requirements
+- Be ready to run consistent quests
+
+If interested, fill out the **DM Application**.
+
+DMs receive **free membership** while running quests.
+
+### Can I help in other ways?
+
+Yes—volunteers may contribute to:
+
+- Moderation and community support
+- Maps and visual resources
+- Lore organization
+- Tools, automation, and record-keeping
+
+Volunteers may earn dues credits.
+
+### How are disputes handled?
+
+Most issues resolve through respectful conversation.
+Staff intervene when needed, using the Charter as guidance.
+
+- Educate first
+- Enforce when required
+- Zero tolerance for harassment or consent violations
+
+---
+
+## Other Questions
+
+### Can I invite friends?
+
+Absolutely. Every new member begins with a free trial and must follow the same onboarding steps.
+
+### Where can I learn more about the Forgotten Realms?
+
+We offer a **Setting Guide** to help you navigate our corner of the Realms, plus links for deeper lore dives. You don't need to be a lore expert to play.
+
+### Still have questions?
+
+Ask in the server—staff are always happy to help.

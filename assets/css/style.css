@@ -12,8 +12,8 @@
     }
 }
 
-/* Content styling for single page layouts */
-.setting-content > p:first-of-type {
+/* Content styling for single page layouts - intro paragraph after h2 */
+.setting-content > h2:first-child + p {
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 1.25rem;
     font-weight: 500;
@@ -53,6 +53,7 @@
     line-height: 1.6;
     color: #222;
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .setting-content strong {
@@ -104,4 +105,25 @@
 .setting-content .grid li.flex {
     padding-left: 0;
     margin-bottom: 0;
+}
+
+/* FAQ question styling */
+.setting-content h3 {
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #2C3E50;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #d4a94c;
+    text-align: left;
+}
+
+/* Paragraphs after h3 should be left-aligned (overrides first-of-type centering for FAQ) */
+.setting-content h3 + p {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #222;
 }

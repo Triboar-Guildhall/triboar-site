@@ -1,0 +1,84 @@
+<form id="volunteer-application-form" class="space-y-6 max-w-2xl">
+  <div>
+    <label for="vol-discord" class="block font-semibold text-guild-brown mb-2">Discord Username *</label>
+    <input type="text" id="vol-discord" name="discord" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-guild-blue focus:border-transparent">
+  </div>
+
+  <div>
+    <label class="block font-semibold text-guild-brown mb-2">Areas of Interest *</label>
+    <p class="text-gray-600 text-sm mb-3">Select all that apply:</p>
+    <div class="space-y-2">
+      <label class="flex items-center">
+        <input type="checkbox" name="areas" value="moderation" class="mr-3 w-5 h-5 text-guild-blue">
+        <span>Moderation & Community Support</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="areas" value="maps-art" class="mr-3 w-5 h-5 text-guild-blue">
+        <span>Maps & Visual Resources</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="areas" value="lore" class="mr-3 w-5 h-5 text-guild-blue">
+        <span>Lore Organization & World-Building</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="areas" value="tools" class="mr-3 w-5 h-5 text-guild-blue">
+        <span>Tools, Automation & Bots</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="areas" value="records" class="mr-3 w-5 h-5 text-guild-blue">
+        <span>Record-Keeping & Documentation</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="areas" value="onboarding" class="mr-3 w-5 h-5 text-guild-blue">
+        <span>New Member Onboarding & Help</span>
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" name="areas" value="other" class="mr-3 w-5 h-5 text-guild-blue">
+        <span>Other (describe below)</span>
+      </label>
+    </div>
+  </div>
+
+  <div>
+    <label for="vol-skills" class="block font-semibold text-guild-brown mb-2">Relevant Skills or Experience *</label>
+    <textarea id="vol-skills" name="skills" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-guild-blue focus:border-transparent" placeholder="Tell us about any relevant experience, tools you're familiar with, or skills you'd bring to the role."></textarea>
+  </div>
+
+  <div>
+    <label for="vol-availability" class="block font-semibold text-guild-brown mb-2">Availability *</label>
+    <textarea id="vol-availability" name="availability" rows="3" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-guild-blue focus:border-transparent" placeholder="How much time can you contribute? Any scheduling constraints?"></textarea>
+  </div>
+
+  <div>
+    <label for="vol-additional" class="block font-semibold text-guild-brown mb-2">Anything else you'd like us to know?</label>
+    <textarea id="vol-additional" name="additional" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-guild-blue focus:border-transparent" placeholder="Optional"></textarea>
+  </div>
+
+  <div>
+    <button type="submit" class="bg-guild-blue text-white px-8 py-4 rounded-md font-semibold hover:bg-guild-blue-dark transition-colors text-lg">Submit Application</button>
+  </div>
+</form>
+
+<script>
+document.getElementById('volunteer-application-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch('https://formspree.io/f/movglawe', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      window.location.href = '/application-submitted/';
+    } else {
+      alert('There was a problem submitting your application. Please try again.');
+    }
+  } catch (error) {
+    alert('There was a problem submitting your application. Please try again.');
+  }
+});
+</script>
