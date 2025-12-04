@@ -188,7 +188,7 @@ Dungeon Masters are welcome. To DM, you should:
 - Meet pacing requirements
 - Be ready to run consistent quests
 
-If interested, fill out the **DM Application**.
+If interested, fill out the [DM Application](/apply-dm/).
 
 DMs receive **free membership** while running quests.
 
