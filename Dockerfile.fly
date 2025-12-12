@@ -12,6 +12,9 @@ COPY . .
 RUN npm install tailwindcss@3.4.0
 RUN npx tailwindcss -i ./assets/css/style.css -o ./static/css/output.css --config ./tailwind.config.js --minify
 
+# Ensure static files have proper permissions
+RUN chmod -R 644 ./static/javascript/*.js
+
 # Build Hugo site for production
 RUN hugo --minify --environment production
 
