@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Staging to GitHub Pages
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  deploy-staging:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,11 +36,14 @@ jobs:
       - name: Build Tailwind CSS
         run: npx tailwindcss -i ./assets/css/style.css -o ./static/css/output.css --config ./tailwind.config.js --minify
 
-      - name: Build Hugo site
-        run: hugo --minify --environment production
+      - name: Build Hugo site for staging
+        run: hugo --minify --environment staging
 
       - name: Add .nojekyll file to prevent Jekyll processing
         run: cp .nojekyll public/
+
+      - name: Add CNAME for custom domain
+        run: echo "staging.triboarguildhall.com" > public/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

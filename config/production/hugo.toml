@@ -1,1 +1,2 @@
-baseURL = 'https://triboar-guildhall.github.io/triboar-site/'
+# Production environment - Fly.io
+baseURL = 'https://triboarguildhall.com/'
