@@ -61,6 +61,7 @@
         </div>
     </main>
 
+    {{ if not .Params.hide_cta }}
     <!-- Call to Action -->
     <section class="py-16 text-white text-center bg-guild-blue-darker">
         <div class="max-w-4xl mx-auto px-5">
@@ -69,6 +70,7 @@
             <a href="{{ "/" | relURL }}#join" class="font-sans bg-guild-gold-dark text-guild-blue-darker px-8 py-4 rounded-md font-semibold no-underline hover:opacity-90 transition-opacity text-lg">Join the Guild →</a>
         </div>
     </section>
+    {{ end }}
 
     <!-- Footer -->
     {{ partial "footer.html" . }}

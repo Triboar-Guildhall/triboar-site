@@ -56,6 +56,10 @@
     text-align: left;
 }
 
+.setting-content p.text-center {
+    text-align: center;
+}
+
 .setting-content strong {
     font-weight: 600;
     color: #a36a3c;
