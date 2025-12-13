@@ -141,17 +141,19 @@ Yes. You unlock additional character slots as you play:
 
 Each character must be created through the Guildhall process.
 
+### Do I need a Discord account?
+
+Yes. All gameplay, communication, and community interaction happens on our Discord server. Discord is free to use and works on desktop, mobile, and web browsers.
+
+If you don't have an account yet, you can create one at [discord.com](https://discord.com). Once you subscribe, you'll receive an invite link to join the Guildhall server.
+
 ### Do I have to use Avrae or other bots?
 
-We use **Avrae** extensively for:
+Yes. **Avrae** is a Discord bot that automates dice rolling for exploration, combat, and skill checks. It handles most of the mechanical side of play so you can focus on storytelling.
 
-- Dice rolls
-- Combat automation
-- Downtime systems
-- **Inventory tracking**
+Beyond combat, Avrae also powers our downtime systems—jobs, crafting, shopping, inventory tracking, and more. If you're buying a potion or selling loot, Avrae keeps the records.
 
-We provide guides, templates, and staff support.
-Our goal is smooth play, not technical stress.
+There is a learning curve. We won't pretend otherwise. But we provide guides, templates, and staff support to help you get comfortable. Most members pick it up quickly, and you don't need to master it before you start playing.
 
 ---
 
