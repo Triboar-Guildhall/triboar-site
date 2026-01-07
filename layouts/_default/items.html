@@ -1,0 +1,148 @@
+{{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+    <!-- Header -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-5">
+            <nav class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="{{ .Site.Home.RelPermalink }}" class="flex items-center no-underline">
+                        <img src="{{ "logo.png" | relURL }}" alt="Triboar Guildhall" class="h-12 w-12 mr-3 mix-blend-multiply">
+                        <span class="font-bold text-xl text-guild-brown">Triboar Guildhall</span>
+                    </a>
+                </div>
+                <a href="{{ .Site.Home.RelPermalink }}#join" class="bg-guild-blue text-white px-6 py-3 rounded-md font-semibold no-underline hover:bg-guild-blue-dark transition-colors">Join the Guild</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 bg-gradient-to-br from-guild-beige-light to-guild-beige">
+        <div class="max-w-6xl mx-auto px-5 text-center">
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-guild-brown mb-4 leading-tight tracking-wide">{{ .Title }}</h1>
+            <div class="w-24 h-1 bg-guild-blue mx-auto mb-6"></div>
+            <p class="font-sans text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{{ .Params.description }}</p>
+        </div>
+    </section>
+
+    <!-- Filters and Table -->
+    <main class="py-8 bg-gray-50 min-h-screen">
+        <div class="max-w-7xl mx-auto px-5">
+            <!-- Search and Filters -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <!-- Search Bar -->
+                <div class="mb-4">
+                    <input type="text" id="searchInput" placeholder="Search items by name..."
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-guild-blue focus:border-transparent text-lg">
+                </div>
+
+                <!-- Filter Row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Rarity</label>
+                        <select id="filterRarity" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-guild-blue">
+                            <option value="">All Rarities</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                        <select id="filterType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-guild-blue">
+                            <option value="">All Types</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Source</label>
+                        <select id="filterSource" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-guild-blue">
+                            <option value="">All Sources</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Crafting Tool</label>
+                        <select id="filterTools" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-guild-blue">
+                            <option value="">All Tools</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Attunement</label>
+                        <select id="filterAttunement" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-guild-blue">
+                            <option value="">Any</option>
+                            <option value="Yes">Required</option>
+                            <option value="No">Not Required</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Use</label>
+                        <select id="filterUse" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-guild-blue">
+                            <option value="">All</option>
+                            <option value="Permanent">Permanent</option>
+                            <option value="Consumable">Consumable</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Results count and clear -->
+                <div class="mt-4 flex justify-between items-center">
+                    <span id="resultCount" class="text-sm text-gray-600">Showing all items</span>
+                    <button id="clearFilters" class="text-sm text-guild-blue hover:text-guild-blue-dark font-medium">Clear all filters</button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full" id="itemsTable">
+                        <thead class="bg-guild-blue text-white">
+                            <tr>
+                                <th class="px-4 py-3 text-left cursor-pointer hover:bg-guild-blue-dark transition-colors" data-sort="Name">
+                                    <div class="flex items-center gap-2">Name <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-left cursor-pointer hover:bg-guild-blue-dark transition-colors" data-sort="Rarity">
+                                    <div class="flex items-center gap-2">Rarity <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-left cursor-pointer hover:bg-guild-blue-dark transition-colors" data-sort="Cost">
+                                    <div class="flex items-center gap-2">Cost <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-left cursor-pointer hover:bg-guild-blue-dark transition-colors" data-sort="Type">
+                                    <div class="flex items-center gap-2">Type <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-left cursor-pointer hover:bg-guild-blue-dark transition-colors hidden md:table-cell" data-sort="Source">
+                                    <div class="flex items-center gap-2">Source <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-center cursor-pointer hover:bg-guild-blue-dark transition-colors hidden lg:table-cell" data-sort="Craftable">
+                                    <div class="flex items-center justify-center gap-2">Craft <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-left cursor-pointer hover:bg-guild-blue-dark transition-colors hidden lg:table-cell" data-sort="Tools">
+                                    <div class="flex items-center gap-2">Tools <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-center cursor-pointer hover:bg-guild-blue-dark transition-colors hidden md:table-cell" data-sort="Attunement">
+                                    <div class="flex items-center justify-center gap-2">Attune <span class="sort-indicator"></span></div>
+                                </th>
+                                <th class="px-4 py-3 text-left cursor-pointer hover:bg-guild-blue-dark transition-colors hidden lg:table-cell" data-sort="Use">
+                                    <div class="flex items-center gap-2">Use <span class="sort-indicator"></span></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsBody" class="divide-y divide-gray-200">
+                            <!-- Items will be inserted here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- No results message -->
+            <div id="noResults" class="hidden bg-white rounded-lg shadow-md p-12 text-center">
+                <p class="text-gray-500 text-lg">No items match your search criteria.</p>
+                <button onclick="document.getElementById('clearFilters').click()" class="mt-4 text-guild-blue hover:text-guild-blue-dark font-medium">Clear filters</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    {{ partial "footer.html" . }}
+
+    <!-- Item Data -->
+    <script>
+        const itemsData = {{ $.Site.Data.items | jsonify | safeJS }};
+    </script>
+    <script src="{{ "javascript/items-table.js" | relURL }}"></script>
+{{ end }}
