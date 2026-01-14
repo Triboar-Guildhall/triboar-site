@@ -87,6 +87,10 @@
 }
 
 /* Reset margins for elements inside shortcode cards */
+.setting-content .rounded-lg h3 {
+    margin-top: 0;
+}
+
 .setting-content .rounded-lg p,
 .setting-content .rounded-lg li {
     margin-bottom: 0;
